@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Yasser Aziz Ali - Cybersecurity Engineer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyber-green: #00ff41;
+            --cyber-blue: #0080ff;
+            --cyber-purple: #8a2be2;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(45deg, var(--darker-bg), var(--dark-bg));
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .cyber-font {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .glitch {
+            position: relative;
+            color: var(--cyber-green);
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            animation: glitch-skew 1s infinite linear alternate-reverse;
+            margin-top: 1rem;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-anim 0.5s infinite linear alternate-reverse;
+            color: var(--cyber-blue);
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-anim2 1s infinite linear alternate-reverse;
+            color: var(--cyber-purple);
+            z-index: -2;
+        }
+        
+        @keyframes glitch-anim {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(2px, 0); }
+            40% { transform: translate(0, 2px); }
+            60% { transform: translate(-2px, 0); }
+            80% { transform: translate(0, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes glitch-skew {
+            0% { transform: skew(0deg); }
+            10% { transform: skew(-2deg); }
+            20% { transform: skew(0deg); }
+            30% { transform: skew(1deg); }
+            40% { transform: skew(0deg); }
+            50% { transform: skew(-1deg); }
+            60% { transform: skew(0deg); }
+            70% { transform: skew(2deg); }
+            80% { transform: skew(0deg); }
+            90% { transform: skew(-1deg); }
+            100% { transform: skew(0deg); }
+        }
+        
+        .cyber-border {
+            border: 2px solid var(--cyber-green);
+            border-radius: 4px;
+            position: relative;
+            background: rgba(0, 255, 65, 0.05);
+        }
+        
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue), var(--cyber-purple));
+            border-radius: 6px;
+            z-index: -1;
+            animation: border-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes border-glow {
+            0% { box-shadow: 0 0 5px var(--cyber-green); }
+            100% { box-shadow: 0 0 20px var(--cyber-green), 0 0 30px var(--cyber-blue); }
+        }
+        
+        .nav-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+        
+        .nav-item:hover {
+            border-color: var(--cyber-green);
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+        }
+        
+        .nav-item.active {
+            background: var(--cyber-green);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .section {
+            padding: 2rem 0;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .cyber-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 128, 255, 0.1));
+            border: 1px solid var(--cyber-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .cyber-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1s ease-in-out;
+        }
+        
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 65, 0.2);
+            border-color: var(--cyber-blue);
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyber-green), var(--cyber-blue));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: skill-shimmer 2s infinite;
+        }
+        
+        @keyframes skill-shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid var(--cyber-green);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--cyber-green); }
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -10;
+            opacity: 0.1;
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .cyber-cv-btn {
+            position: relative;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+        
+        .cyber-cv-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue), var(--cyber-purple), var(--cyber-green));
+            border-radius: 10px;
+            z-index: -1;
+            animation: border-rotate 3s linear infinite;
+        }
+        
+        @keyframes border-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hacker-silhouette {
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="hackerGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2300ff41;stop-opacity:0.8" /><stop offset="50%" style="stop-color:%230080ff;stop-opacity:0.6" /><stop offset="100%" style="stop-color:%238a2be2;stop-opacity:0.4" /></linearGradient></defs><path d="M200 50 C250 50 300 80 320 130 C340 180 330 230 300 270 C280 300 250 320 200 320 C150 320 120 300 100 270 C70 230 60 180 80 130 C100 80 150 50 200 50 Z" fill="url(%23hackerGrad)" opacity="0.3"/><circle cx="180" cy="140" r="8" fill="%2300ff41" opacity="0.8"/><circle cx="220" cy="140" r="8" fill="%2300ff41" opacity="0.8"/><rect x="170" y="180" width="60" height="4" rx="2" fill="%2300ff41" opacity="0.6"/><path d="M160 200 Q200 210 240 200" stroke="%2300ff41" stroke-width="2" fill="none" opacity="0.4"/><rect x="120" y="120" width="160" height="8" rx="4" fill="%230080ff" opacity="0.3"/><rect x="140" y="100" width="120" height="4" rx="2" fill="%238a2be2" opacity="0.4"/></svg>') center/contain no-repeat;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 65, 0.5));
+            animation: float 3s ease-in-out infinite, pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% { filter: drop-shadow(0 0 20px rgba(0, 255, 65, 0.5)) hue-rotate(0deg); }
+            100% { filter: drop-shadow(0 0 30px rgba(0, 128, 255, 0.7)) hue-rotate(60deg); }
+        }
+        
+        .form-input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--cyber-green);
+            border-radius: 4px;
+            padding: 0.75rem;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .cyber-btn {
+            background: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue));
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cyber-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .section {
+                page-break-inside: avoid;
+                display: block !important;
+            }
+            .glitch, .cyber-border, .cyber-card {
+                animation: none !important;
+            }
+            .matrix-bg {
+                display: none !important;
+            }
+            nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrix"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-green-500">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="cyber-font text-xl font-bold text-green-400">
+                    <i class="fas fa-shield-alt mr-2"></i>AHMED.CYBER
+                </div>
+                <div class="flex space-x-4">
+                    <div class="nav-item active" onclick="showSection('home')">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </div>
+                    <div class="nav-item" onclick="showSection('about')">
+                        <i class="fas fa-user mr-2"></i>About
+                    </div>
+                    <div class="nav-item" onclick="showSection('services')">
+                        <i class="fas fa-shield-alt mr-2"></i>Services
+                    </div>
+                    <div class="nav-item" onclick="showSection('projects')">
+                        <i class="fas fa-code mr-2"></i>Projects
+                    </div>
+                    <div class="nav-item" onclick="showSection('skills')">
+                        <i class="fas fa-cog mr-2"></i>Skills
+                    </div>
+                    <div class="nav-item" onclick="showSection('experience')">
+                        <i class="fas fa-briefcase mr-2"></i>Experience
+                    </div>
+                    <div class="nav-item" onclick="showSection('certifications')">
+                        <i class="fas fa-certificate mr-2"></i>Certifications
+                    </div>
+                    <div class="nav-item" onclick="showSection('contact')">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active pt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="typing-effect cyber-font text-xl text-green-400 mb-6">Junior Network Security & Cybersecurity Engineer</div>
+                <h1 class="glitch cyber-font mb-6" data-text="AHMED YASSER AZIZ ALI">AHMED YASSER AZIZ ALI</h1>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Mysterious Hacker Image -->
+                    <div class="text-center">
+                        <div class="hacker-silhouette"></div>
+                        <p class="text-green-400 cyber-font text-sm mt-4">
+                            <i class="fas fa-user-secret mr-2"></i>CYBER SECURITY SPECIALIST
+                        </p>
+                    </div>
+                    
+                    <!-- Unique Selling Points -->
+                    <div class="cyber-card">
+                        <h2 class="cyber-font text-2xl mb-6 text-green-400">UNIQUE VALUE PROPOSITION</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="cyber-border p-4">
+                                <div class="flex items-center mb-3">
+                                    <i class="fas fa-network-wired text-green-400 text-xl mr-3"></i>
+                                    <h3 class="cyber-font text-lg text-green-400">Complete Network Security Lifecycle</h3>
+                                </div>
+                                <p class="text-sm text-gray-300">
+                                    I design and build secure enterprise networks, then perform comprehensive penetration testing 
+                                    on my own implementations with detailed vulnerability reports and improvement recommendations.
+                                </p>
+                            </div>
+                            
+                            <div class="cyber-border p-4">
+                                <div class="flex items-center mb-3">
+                                    <i class="fas fa-user-shield text-blue-400 text-xl mr-3"></i>
+                                    <h3 class="cyber-font text-lg text-blue-400">Social Engineering Defense Training</h3>
+                                </div>
+                                <p class="text-sm text-gray-300">
+                                    Specialized in employee awareness training for social engineering attacks, phishing campaigns, 
+                                    and human factor vulnerabilities with hands-on simulation exercises.
+                                </p>
+                            </div>
+                            
+                            <div class="cyber-border p-4">
+                                <div class="flex items-center mb-3">
+                                    <i class="fas fa-bug text-red-400 text-xl mr-3"></i>
+                                    <h3 class="cyber-font text-lg text-red-400">Ethical Hacking & Development</h3>
+                                </div>
+                                <p class="text-sm text-gray-300">
+                                    Advanced reverse engineering capabilities with mobile application security analysis, 
+                                    custom payload development, and comprehensive security research methodologies.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                            <!-- CV Download Button -->
+                            <a href="assets/Ahmed_Yasser_CV.docx" download="Ahmed_Yasser_Cybersecurity_CV.docx" 
+                               class="cyber-cv-btn group flex-1 relative overflow-hidden px-6 py-4 bg-gradient-to-r from-green-900 to-blue-900 border-2 border-green-400 rounded-lg text-white font-bold text-center transition-all duration-300 hover:from-green-800 hover:to-blue-800 hover:border-blue-400 hover:transform hover:scale-105 hover:shadow-lg hover:shadow-green-400/30">
+                                <div class="flex items-center justify-center space-x-3">
+                                    <i class="fas fa-download text-green-400 group-hover:text-blue-400 transition-colors duration-300"></i>
+                                    <span class="cyber-font">Download CV</span>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                            </a>
+                            
+                            <!-- My Work Button -->
+                            <button onclick="showSection('projects')" 
+                                    class="cyber-btn flex-1 bg-gradient-to-r from-purple-900 to-red-900 border-2 border-purple-400 hover:border-red-400 py-4">
+                                <i class="fas fa-code mr-2"></i>
+                                <span class="cyber-font">My Work</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section pt-20">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-user mr-4"></i>ABOUT ME
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="cyber-card text-center">
+                    <div class="floating-icon text-6xl text-green-400 mb-6">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h2 class="cyber-font text-3xl mb-6 text-green-400">Welcome to My Cyber Domain</h2>
+                    <p class="text-lg leading-relaxed mb-6">
+                        Hi, I'm <span class="text-green-400 font-bold">Ahmed Yasser Aziz Ali</span>, a Junior Network Security & Cybersecurity Engineer 
+                        specializing in designing and securing enterprise networks, configuring firewalls & VPNs, and performing 
+                        ethical hacking & penetration testing.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6">
+                        Results-oriented and security-focused professional with strong technical knowledge of network infrastructure, 
+                        threat mitigation, and offensive security techniques. Skilled in configuring and managing firewalls, 
+                        conducting vulnerability assessments, and performing hands-on penetration testing in enterprise environments.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        Passionate about <span class="text-blue-400">cyber defense</span>, <span class="text-purple-400">reverse engineering</span>, 
+                        and advanced security labs. I build fortress-like digital infrastructures that stand against the evolving threat landscape.
+                    </p>
+                    <div class="flex justify-center mt-8 space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400">10+</div>
+                            <div class="text-sm">Security Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400">5+</div>
+                            <div class="text-sm">Certifications</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-400">3+</div>
+                            <div class="text-sm">Training Programs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-shield-alt mr-4"></i>SERVICES
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="cyber-card text-center">
+                    <div class="floating-icon text-4xl text-green-400 mb-4">
+                        <i class="fas fa-firewall"></i>
+                    </div>
+                    <h3 class="cyber-font text-xl mb-3 text-green-400">Network Security Solutions</h3>
+                    <p class="text-sm">Firewalls, IDS/IPS, Cisco ISE, VPNs. Complete network protection with enterprise-grade security implementations.</p>
+                </div>
+                
+                <div class="cyber-card text-center">
+                    <div class="floating-icon text-4xl text-red-400 mb-4">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="cyber-font text-xl mb-3 text-red-400">Penetration Testing & Ethical Hacking</h3>
+                    <p class="text-sm">Web, Network, Malware Analysis, Reverse Engineering. Finding vulnerabilities before the bad guys do.</p>
+                </div>
+                
+                <div class="cyber-card text-center">
+                    <div class="floating-icon text-4xl text-blue-400 mb-4">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="cyber-font text-xl mb-3 text-blue-400">Enterprise Network Design</h3>
+                    <p class="text-sm">Building & securing large-scale infrastructures with scalable, resilient network architectures.</p>
+                </div>
+                
+                <div class="cyber-card text-center">
+                    <div class="floating-icon text-4xl text-purple-400 mb-4">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="cyber-font text-xl mb-3 text-purple-400">Training & Awareness</h3>
+                    <p class="text-sm">Employee training for social engineering awareness, phishing defense, and cybersecurity best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-code mr-4"></i>PROJECTS
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-search text-red-400 text-2xl mr-3"></i>
+                        <h3 class="cyber-font text-xl text-red-400">Android Reverse Engineering for YouTube Application</h3>
+                    </div>
+                    <p class="mb-4">Conducted comprehensive reverse engineering analysis of YouTube Android application using advanced ethical hacking techniques. Explored Java and native layers, implemented tracing and JNI analysis, and studied anti-debug protection mechanisms while maintaining complete ethical standards.</p>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-green-400 font-semibold mb-2">Tools & Technologies Used:</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div><i class="fas fa-mobile-alt text-blue-400 mr-1"></i> APK Tool</div>
+                            <div><i class="fas fa-code text-green-400 mr-1"></i> Jadx Decompiler</div>
+                            <div><i class="fas fa-bug text-red-400 mr-1"></i> Frida Framework</div>
+                            <div><i class="fas fa-terminal text-purple-400 mr-1"></i> ADB Commands</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-blue-400 font-semibold mb-2">Key Results:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Successfully bypassed anti-debug mechanisms</li>
+                            <li>• Identified security vulnerabilities in app architecture</li>
+                            <li>• Documented comprehensive security assessment report</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Reverse Engineering</span>
+                            <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Mobile Security</span>
+                            <span class="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">Ethical Hacking</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/ahmed-yasseer_reverseengineering-androidsecurity-ethicalhacking-activity-7363339791863603201-TvZA" 
+                           target="_blank" 
+                           class="cyber-btn text-xs px-3 py-1 bg-blue-600 hover:bg-blue-700">
+                            <i class="fab fa-linkedin mr-1"></i>View Post
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-building text-blue-400 text-2xl mr-3"></i>
+                        <h3 class="cyber-font text-xl text-blue-400">Enterprise Network Infrastructure with Security</h3>
+                    </div>
+                    <p class="mb-4">Designed and implemented comprehensive enterprise-grade network infrastructure featuring FortiGate Firewall, Cisco ISE, Windows Server 2016 domain services, hierarchical switching with EtherChannel redundancy, and complete security hardening.</p>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-green-400 font-semibold mb-2">Infrastructure Components:</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div><i class="fas fa-shield-alt text-green-400 mr-1"></i> FortiGate Firewall</div>
+                            <div><i class="fas fa-network-wired text-blue-400 mr-1"></i> Cisco ISE</div>
+                            <div><i class="fas fa-server text-purple-400 mr-1"></i> Windows Server 2016</div>
+                            <div><i class="fas fa-route text-yellow-400 mr-1"></i> OSPF & BGP</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-blue-400 font-semibold mb-2">Security Features Implemented:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Site-to-Site IPsec VPN connectivity</li>
+                            <li>• RADIUS authentication and access control</li>
+                            <li>• UTM features with threat protection</li>
+                            <li>• Network segmentation and VLANs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">Enterprise Network</span>
+                            <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">FortiGate</span>
+                            <span class="px-2 py-1 bg-purple-900 text-purple-300 rounded text-xs">Cisco ISE</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/ahmed-yasseer_networking-cisco-fortinet-activity-7369714520262447105-bXax" 
+                           target="_blank" 
+                           class="cyber-btn text-xs px-3 py-1 bg-blue-600 hover:bg-blue-700">
+                            <i class="fab fa-linkedin mr-1"></i>View Post
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-green-400 text-2xl mr-3"></i>
+                        <h3 class="cyber-font text-xl text-green-400">Multi-Vendor Firewall Testing Lab</h3>
+                    </div>
+                    <p class="mb-4">Comprehensive firewall testing laboratory implementation featuring multiple vendor solutions for security policy testing, performance benchmarking, and configuration optimization across different platforms.</p>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-green-400 font-semibold mb-2">Firewall Platforms:</h4>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div><i class="fas fa-fire text-red-400 mr-1"></i> Cisco FTD</div>
+                            <div><i class="fas fa-shield text-orange-400 mr-1"></i> FortiGate</div>
+                            <div><i class="fas fa-shield-alt text-blue-400 mr-1"></i> Palo Alto</div>
+                            <div><i class="fas fa-lock text-yellow-400 mr-1"></i> Sophos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Multi-Vendor</span>
+                        <span class="px-2 py-1 bg-orange-900 text-orange-300 rounded text-xs">Security Testing</span>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Lab Environment</span>
+                    </div>
+                </div>
+                
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-terminal text-purple-400 text-2xl mr-3"></i>
+                        <h3 class="cyber-font text-xl text-purple-400">Penetration Testing Laboratory</h3>
+                    </div>
+                    <p class="mb-4">Advanced penetration testing environment for vulnerability assessment, exploitation testing, privilege escalation, and security research on various target systems and applications.</p>
+                    
+                    <div class="mb-4">
+                        <h4 class="text-green-400 font-semibold mb-2">Testing Methodologies:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Network enumeration and reconnaissance</li>
+                            <li>• Vulnerability exploitation and privilege escalation</li>
+                            <li>• Persistence techniques and post-exploitation</li>
+                            <li>• Web application security testing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-purple-900 text-purple-300 rounded text-xs">Penetration Testing</span>
+                        <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Kali Linux</span>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Metasploit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-cog mr-4"></i>SKILLS
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="cyber-card">
+                    <h3 class="cyber-font text-xl mb-6 text-green-400"><i class="fas fa-network-wired mr-2"></i>Networking</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>TCP/IP & Network Protocols</span>
+                                <span class="text-green-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Cisco Routing & Switching</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>VPN Technologies</span>
+                                <span class="text-purple-400">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <h3 class="cyber-font text-xl mb-6 text-red-400"><i class="fas fa-shield-alt mr-2"></i>Cybersecurity</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Ethical Hacking</span>
+                                <span class="text-red-400">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Penetration Testing</span>
+                                <span class="text-orange-400">89%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 89%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Vulnerability Assessment</span>
+                                <span class="text-yellow-400">87%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <h3 class="cyber-font text-xl mb-6 text-orange-400"><i class="fas fa-firewall mr-2"></i>Firewalls & Security</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <i class="fas fa-shield-alt text-3xl text-green-400 mb-2"></i>
+                            <p>FortiGate</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fab fa-cisco text-3xl text-blue-400 mb-2"></i>
+                            <p>Cisco FTD</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-fire text-3xl text-orange-400 mb-2"></i>
+                            <p>Palo Alto</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-shield text-3xl text-yellow-400 mb-2"></i>
+                            <p>Sophos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <h3 class="cyber-font text-xl mb-6 text-purple-400"><i class="fas fa-tools mr-2"></i>Security Tools</h3>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <i class="fas fa-search text-2xl text-blue-400 mb-1"></i>
+                            <p class="text-xs">Wireshark</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-sitemap text-2xl text-green-400 mb-1"></i>
+                            <p class="text-xs">Nmap</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-bug text-2xl text-orange-400 mb-1"></i>
+                            <p class="text-xs">Metasploit</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-terminal text-2xl text-red-400 mb-1"></i>
+                            <p class="text-xs">Kali Linux</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-eye text-2xl text-purple-400 mb-1"></i>
+                            <p class="text-xs">OpenVAS</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-desktop text-2xl text-yellow-400 mb-1"></i>
+                            <p class="text-xs">VMware</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-briefcase mr-4"></i>WORK EXPERIENCE
+            </h2>
+            
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="cyber-card">
+                    <div class="flex items-start">
+                        <div class="text-4xl text-green-400 mr-6 mt-2">
+                            <i class="fas fa-shield-alt floating-icon"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="cyber-font text-xl text-green-400 mb-2">Fortinet Cybersecurity Track</h3>
+                                    <p class="text-blue-400 font-semibold">Digital Egypt Pioneers Initiative (DEPI)</p>
+                                    <p class="text-sm text-gray-400">Egypt</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="cyber-border px-3 py-1 text-sm">
+                                        <i class="fas fa-calendar mr-1"></i>July 2025 - December 2025
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-green-400 font-semibold mb-2">Key Responsibilities & Achievements:</h4>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-shield-alt text-green-400 mr-2 mt-1"></i>
+                                        Specialized in FortiGate firewall deployment, configuration, and policy enforcement
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chart-line text-blue-400 mr-2 mt-1"></i>
+                                        Performed log monitoring, traffic inspection, and FortiView analytics
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-cogs text-purple-400 mr-2 mt-1"></i>
+                                        Gained hands-on experience with NAT policies and FortiOS 7.4 administration
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-tools text-yellow-400 mr-2 mt-1"></i>
+                                        Applied fundamental security best practices and system diagnostics
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">FortiGate</span>
+                                <span class="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">FortiOS 7.4</span>
+                                <span class="px-2 py-1 bg-purple-900 text-purple-300 rounded text-xs">Security Policies</span>
+                                <span class="px-2 py-1 bg-yellow-900 text-yellow-300 rounded text-xs">Network Security</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <div class="flex items-start">
+                        <div class="text-4xl text-red-400 mr-6 mt-2">
+                            <i class="fas fa-user-secret floating-icon"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="cyber-font text-xl text-red-400 mb-2">Upskilling Program in Ethical Hacking</h3>
+                                    <p class="text-green-400 font-semibold">National Telecommunication Institute (NTI)</p>
+                                    <p class="text-sm text-gray-400">Cairo, Egypt</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="cyber-border px-3 py-1 text-sm">
+                                        <i class="fas fa-calendar mr-1"></i>June 2024 - June 2025
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-green-400 font-semibold mb-2">Training Highlights:</h4>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-terminal text-red-400 mr-2 mt-1"></i>
+                                        Focused on ethical hacking using Kali Linux, Metasploit, and Wireshark
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-bug text-orange-400 mr-2 mt-1"></i>
+                                        Practiced simulated attacks and penetration testing methodologies
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-file-alt text-blue-400 mr-2 mt-1"></i>
+                                        Created comprehensive vulnerability assessment reports
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-shield text-green-400 mr-2 mt-1"></i>
+                                        Applied ethical standards and responsible disclosure practices
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Ethical Hacking</span>
+                                <span class="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">Kali Linux</span>
+                                <span class="px-2 py-1 bg-purple-900 text-purple-300 rounded text-xs">Metasploit</span>
+                                <span class="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">Vulnerability Assessment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cyber-card">
+                    <div class="flex items-start">
+                        <div class="text-4xl text-blue-400 mr-6 mt-2">
+                            <i class="fas fa-broadcast-tower floating-icon"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="cyber-font text-xl text-blue-400 mb-2">Telecommunications & Communication Systems</h3>
+                                    <p class="text-purple-400 font-semibold">ITIDA-Systel Summer Training Program</p>
+                                    <p class="text-sm text-gray-400">Egypt</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="cyber-border px-3 py-1 text-sm">
+                                        <i class="fas fa-calendar mr-1"></i>Summer 2025 - 4 Weeks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-green-400 font-semibold mb-2">Training Components:</h4>
+                                <ul class="space-y-2 text-sm text-gray-300">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-satellite text-blue-400 mr-2 mt-1"></i>
+                                        Telecommunications, Microwave and Broadband Communication systems
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-video text-green-400 mr-2 mt-1"></i>
+                                        Public Safety Communication, Fiber Optics, and CCTV systems
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-users text-purple-400 mr-2 mt-1"></i>
+                                        Professional skills: Communication, Leadership, Teamwork, Presentation
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-shield-alt text-red-400 mr-2 mt-1"></i>
+                                        Introduction to Information Security and Privacy fundamentals
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-900 text-blue-300 rounded text-xs">Telecommunications</span>
+                                <span class="px-2 py-1 bg-green-900 text-green-300 rounded text-xs">Fiber Optics</span>
+                                <span class="px-2 py-1 bg-purple-900 text-purple-300 rounded text-xs">Professional Skills</span>
+                                <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">InfoSec Fundamentals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-certificate mr-4"></i>CERTIFICATIONS & EDUCATION
+            </h2>
+            
+            <div class="max-w-6xl mx-auto">
+                <!-- Education -->
+                <div class="cyber-card mb-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-graduation-cap text-4xl text-blue-400 mr-4"></i>
+                        <div>
+                            <h3 class="cyber-font text-2xl text-blue-400">Bachelor of Engineering</h3>
+                            <p class="text-green-400 font-semibold">Communications & Electronics Engineering</p>
+                            <p class="text-sm text-gray-400">Helwan University Faculty of Engineering, Cairo, Egypt</p>
+                            <p class="text-sm text-yellow-400">September 2022 - June 2027 (Expected)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="cyber-card text-center">
+                        <div class="text-4xl text-green-400 mb-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="cyber-font text-lg text-green-400 mb-2">FortiGate Security</h3>
+                        <p class="text-sm text-gray-300 mb-2">Digital Egypt Pioneers Initiative (DEPI)</p>
+                        <div class="inline-block bg-green-900 text-green-300 px-3 py-1 rounded-full text-xs">
+                            <i class="fas fa-check mr-1"></i>In Progress
+                        </div>
+                    </div>
+
+                    <div class="cyber-card text-center">
+                        <div class="text-4xl text-red-400 mb-4">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <h3 class="cyber-font text-lg text-red-400 mb-2">Ethical Hacking</h3>
+                        <p class="text-sm text-gray-300 mb-2">National Telecommunication Institute (NTI)</p>
+                        <div class="inline-block bg-red-900 text-red-300 px-3 py-1 rounded-full text-xs">
+                            <i class="fas fa-check mr-1"></i>Certified
+                        </div>
+                    </div>
+
+                    <div class="cyber-card text-center">
+                        <div class="text-4xl text-blue-400 mb-4">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h3 class="cyber-font text-lg text-blue-400 mb-2">Telecommunications Systems</h3>
+                        <p class="text-sm text-gray-300 mb-2">ITIDA-Systel Training Program</p>
+                        <div class="inline-block bg-blue-900 text-blue-300 px-3 py-1 rounded-full text-xs">
+                            <i class="fas fa-check mr-1"></i>Completed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container mx-auto px-4">
+            <h2 class="cyber-font text-4xl text-center mb-12 text-green-400">
+                <i class="fas fa-envelope mr-4"></i>CONTACT
+            </h2>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Contact Information -->
+                    <div class="cyber-card">
+                        <div class="text-6xl text-green-400 mb-8 text-center">
+                            <i class="fas fa-satellite-dish floating-icon"></i>
+                        </div>
+                        <h3 class="cyber-font text-2xl mb-8 text-green-400 text-center">Let's Connect & Secure the Digital World</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="cyber-card bg-opacity-50 text-center">
+                                <div class="text-3xl text-blue-400 mb-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h4 class="cyber-font text-lg mb-2 text-blue-400">Email</h4>
+                                <a href="mailto:engahmedmido111@gmail.com" class="text-gray-300 hover:text-blue-400 transition-colors">
+                                    engahmedmido111@gmail.com
+                                </a>
+                            </div>
+                            
+                            <div class="cyber-card bg-opacity-50 text-center">
+                                <div class="text-3xl text-green-400 mb-4">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h4 class="cyber-font text-lg mb-2 text-green-400">Phone</h4>
+                                <a href="tel:+201113286013" class="text-gray-300 hover:text-green-400 transition-colors">
+                                    +20 1113286013
+                                </a>
+                            </div>
+                            
+                            <div class="cyber-card bg-opacity-50 text-center">
+                                <div class="text-3xl text-blue-600 mb-4">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <h4 class="cyber-font text-lg mb-2 text-blue-600">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/ahmed-yasseer" target="_blank" class="text-gray-300 hover:text-blue-600 transition-colors">
+                                    linkedin.com/in/ahmed-yasseer
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="cyber-border p-6 mt-8">
+                            <h4 class="cyber-font text-xl mb-4 text-green-400">Areas of Expertise</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="text-center">
+                                    <i class="fas fa-shield-alt text-green-400 mb-2 block"></i>
+                                    Network Security
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-bug text-red-400 mb-2 block"></i>
+                                    Penetration Testing
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-firewall text-blue-400 mb-2 block"></i>
+                                    Firewall Management
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-search text-purple-400 mb-2 block"></i>
+                                    Reverse Engineering
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="cyber-card">
+                        <h3 class="cyber-font text-2xl mb-6 text-green-400 text-center">
+                            <i class="fas fa-paper-plane mr-2"></i>Contact Me
+                        </h3>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-green-400" for="name">
+                                    <i class="fas fa-user mr-2"></i>Full Name
+                                </label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-blue-400" for="email">
+                                    <i class="fas fa-envelope mr-2"></i>Email Address
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-purple-400" for="subject">
+                                    <i class="fas fa-tag mr-2"></i>Subject
+                                </label>
+                                <select id="subject" name="subject" class="form-input" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="consultation">Cybersecurity Consultation</option>
+                                    <option value="penetration-testing">Penetration Testing Service</option>
+                                    <option value="network-security">Network Security Design</option>
+                                    <option value="training">Security Training & Awareness</option>
+                                    <option value="collaboration">Project Collaboration</option>
+                                    <option value="employment">Employment Opportunity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-yellow-400" for="message">
+                                    <i class="fas fa-comment mr-2"></i>Message
+                                </label>
+                                <textarea id="message" name="message" rows="6" class="form-input" placeholder="Describe your project, requirements, or how I can help you..." required></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2 text-red-400" for="urgency">
+                                    <i class="fas fa-clock mr-2"></i>Urgency Level
+                                </label>
+                                <select id="urgency" name="urgency" class="form-input">
+                                    <option value="low">Low - General inquiry</option>
+                                    <option value="medium">Medium - Project discussion</option>
+                                    <option value="high">High - Urgent security matter</option>
+                                    <option value="critical">Critical - Security incident</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="cyber-btn w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-500 hover:to-blue-500 py-3 text-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                <span class="cyber-font">Send Secure Message</span>
+                            </button>
+                        </form>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-400">
+                                <i class="fas fa-shield-alt text-green-400 mr-1"></i>
+                                Your message will be sent securely via email encryption
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                        Ready to collaborate on cybersecurity projects, network security implementations, 
+                        or penetration testing engagements? Let's build secure digital infrastructures together. 
+                        Available for consulting, training, and full-time opportunities in the cybersecurity domain.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                targetSection.classList.add('active');
+            }
+            
+            // Update navigation active state
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
+        }
+
+        // Contact form functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            const urgency = formData.get('urgency');
+            
+            // Create email body
+            const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0AUrgency: ${urgency}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:engahmedmido111@gmail.com?subject=Portfolio Contact: ${subject}&body=${emailBody}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Email client opened! Please send the email to complete your message.');
+        });
+
+        // Matrix rain effect
+        function createMatrix() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            document.getElementById('matrix').appendChild(canvas);
+            
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&()&^%+-/~{[|`]}";
+            const matrixArray = matrix.split("");
+            
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            
+            const drops = [];
+            for(let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff41';
+                ctx.font = fontSize + 'px monospace';
+                
+                for(let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 35);
+        }
+
+        // Show all sections for PDF printing
+        window.addEventListener('beforeprint', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'block');
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrix();
+            
+            // Show home section by default
+            showSection('home');
+            
+            // Handle window resize for matrix
+            window.addEventListener('resize', () => {
+                document.getElementById('matrix').innerHTML = '';
+                createMatrix();
+            });
+        });
+    </script>
+</body>
+</html>
